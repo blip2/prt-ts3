@@ -5,9 +5,11 @@ ALLOWED_ADDR = ['127.0.0.1', '74.55.51.162', '94.175.121.72',]
 
 from flask import Flask, jsonify, request, abort, make_response
 from api import TS3Server
+from flask_cors import CORS 
 from config import *
 
 app = Flask(__name__)
+cors = CORS(app)
 server = TS3Server()
 
 @app.before_request
@@ -26,10 +28,19 @@ def error(json, status):
     response.status_code = status
     return response
 
+@app.route('/player/', methods=['OPTIONS'])
+def player_get():
+    response = {"response": "success", }
+    return jsonify(**response)
+    
 
 @app.route('/player/', methods=['PUT'])
 def player_update():
+    print request
+    print request.data
     data = request.get_json()
+    if not data:
+        return error({"response": "no data received",}, 400)
     if "uid" not in data or "team" not in data or "rank" not in data:
         return error({"response": "missing parameters from request",}, 400)
     if data["team"] not in TEAMS:
@@ -57,6 +68,8 @@ def player_update():
 @app.route('/player/', methods=['DELETE'])
 def player_delete():
     data = request.get_json()
+    if not data:
+        return error({"response": "no data received",}, 400)
     if "uid" not in data:
         return error({"response": "missing parameters from request",}, 400)
 
