@@ -16,6 +16,8 @@ class TS3Server():
     def getClientId(self, uid):
         self.check_server()
         response = self.server.send_command('clientgetdbidfromuid', keys={'cluid': uid,})
+        if 'cldbid' not in response.data[0]:
+            return None
         return response.data[0]['cldbid']
 
 
