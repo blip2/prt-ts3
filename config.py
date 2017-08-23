@@ -1,7 +1,7 @@
 HOST = '127.0.0.1'
 PORT = 10011
 USER = 'serveradmin'
-PASS = 'AAmcV62D'
+PASS = 'FAKEPASS'
 SERVER = 1
 
 TEAMS = {
@@ -63,12 +63,22 @@ CHANNEL_GROUPS = {
     },
     1: {
         "name": "Team Member",
-        "groupid": 10,
+        "groupid": 12,
     },
     2: {
         "name": "Team HQ",
-        "groupid": 9,
+        "groupid": 11,
     },
 }
 
 BATTLEMODE_POWER = 20
+
+try:
+    config_module = __import__('config_local',
+                               globals(), locals())
+
+    for setting in dir(config_module):
+        if setting == setting.upper():
+            locals()[setting] = getattr(config_module, setting)
+except Exception:
+    pass

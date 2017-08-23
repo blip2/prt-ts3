@@ -12,6 +12,10 @@ class TS3Server():
     def check_server(self):
         if not self.server:
             self.__init__()
+        try:
+            self.server.send_command('serverinfo')
+        except:
+            self.__init__()
 
     def getClientId(self, uid):
         self.check_server()

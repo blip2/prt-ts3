@@ -38,8 +38,6 @@ def player_get():
 
 @app.route('/player/', methods=['PUT'])
 def player_update():
-    print request
-    print request.data
     data = request.get_json()
     if not data:
         return error({"response": "no data received", }, 400)
