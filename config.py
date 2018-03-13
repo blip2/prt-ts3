@@ -30,15 +30,15 @@ RANKS = {
     },
     "nco": {
         "groupIdbyTeam": {0: 27, 1: 26},
-        "channelGroup": 1,
+        "channelGroup": 3,
     },
     "sl": {
         "groupIdbyTeam": {0: 29, 1: 28},
-        "channelGroup": 1,
+        "channelGroup": 3,
     },
     "hco": {
         "groupIdbyTeam": {0: 30, 1: 31},
-        "channelGroup": 2,
+        "channelGroup": 4,
     },
     "xo": {
         "groupIdbyTeam": {0: 32, 1: 33},
@@ -62,12 +62,20 @@ CHANNEL_GROUPS = {
         "groupid": 8,
     },
     1: {
-        "name": "Team Member",
+        "name": "Regular",
         "groupid": 12,
     },
     2: {
-        "name": "Team HQ",
+        "name": "Leader",
         "groupid": 11,
+    },
+    3: {
+        "name": "Officer",
+        "groupid": 13,
+    },
+    4: {
+        "name": "High Command",
+        "groupid": 14,
     },
 }
 

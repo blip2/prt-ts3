@@ -10,7 +10,7 @@ app = Flask(__name__)
 cors = CORS(app)
 server = TS3Server()
 
-ALLOWED_ADDR = ['127.0.0.1', '74.55.51.162', '164.132.41.81', ]
+ALLOWED_ADDR = ['127.0.0.1', '74.55.51.162', '164.132.41.81', '149.56.34.231', ]
 
 
 @app.before_request
